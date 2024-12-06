@@ -15,4 +15,25 @@ class Category extends Model
      * @var array
      */
     protected $fillable = ['name', 'slug', 'image'];
+
+    /**
+     * products
+     *
+     * @return void
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+    
+    /**
+     * getImageAtribute
+     *
+     * @param  mixed $image
+     * @return void
+     */
+    public function getImageAtribute( $image)
+    {
+        return asset('storage/categories/' . $image);
+    }
 }

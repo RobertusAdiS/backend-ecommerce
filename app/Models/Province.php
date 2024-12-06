@@ -18,4 +18,14 @@ class Province extends Model
         'province_id',
         'name'
     ];
+
+    /**
+     * cities
+     *
+     * @return void
+     */
+    public function cities()    
+    {
+        return $this->hasMany(City::class, 'province_id');
+    }
 }

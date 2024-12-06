@@ -15,4 +15,9 @@ class Slider extends Model
      * @var array
      */
     protected $fillable = ['image', 'link'];
+
+    public function getImageAttribute($image)
+    {
+        return asset('storage/sliders/' . $image);
+    }
 }

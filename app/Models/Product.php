@@ -26,4 +26,46 @@ class Product extends Model
         'stock',
         'discount',
     ];
+
+    /**
+     * category
+     *
+     * @return void
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    /**
+     * reviews
+     *
+     * @return void
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
+    /**
+     * getImageAttribute
+     *
+     * @param  mixed $image
+     * @return void
+     */
+    public function getImageAttribute($image)
+    {
+        return asset('storage/products/' . $image);
+    }
+    
+    /**
+     * getReviewAvgRatingAttribute
+     *
+     * @param  mixed $value
+     * @return void
+     */
+    public function getReviewAvgRatingAttribute($value)
+    {
+        return $value ? substr($value, 0, 3) : 0;
+    }
 }
