@@ -60,5 +60,9 @@ Route::prefix('customer')->group(function () {
         Route::post('/logout',[App\Http\Controllers\Api\Customer\LoginController::class, 'logout', ['as'=> 'customer']]);
         //dashboard
         Route::get('/dashboard',[App\Http\Controllers\Api\Customer\DashboardController::class, 'index', ['as'=> 'customer']]);
+        //invoice resource
+        Route::apiResource('/invoices', App\Http\Controllers\Api\Customer\InvoiceController::class, ['except' => ['create', 'store','edit', 'update', 'destroy'], 'as' => 'customer']);
+        //review
+        Route::post('/review',[App\Http\Controllers\Api\Customer\ReviewController::class, 'store', ['as'=> 'customer']]);
     });
 });
