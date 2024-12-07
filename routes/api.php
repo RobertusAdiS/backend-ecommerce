@@ -44,3 +44,8 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('/users',App\Http\Controllers\Api\Admin\UserController::class, ['except' =>['create', 'edit'], 'as' => 'admin']);
     });
 });
+
+Route::prefix('customer')->group(function () {
+    //route register
+    Route::post('/register',[App\Http\Controllers\Api\Customer\RegisterController::class, 'store', ['as'=> 'customer']]);
+});

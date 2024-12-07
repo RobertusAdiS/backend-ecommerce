@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +24,11 @@ class Customer extends Model
         'remember_token',
     ];
     
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     /**
      * invoices
      *
@@ -50,10 +55,10 @@ class Customer extends Model
      * @param  mixed $date
      * @return void
      */
-    public function getCreatedAtAttribute( $date)
+    public function getCreatedAtAttribute($date)
     {
         $value = Carbon::parse($date);
-        $parse = $value->local('id');
-        return $parse->tranlatedFormat('l, d F Y');
+        $parse = $value->locale('id');
+        return $parse->translatedFormat('l, d F Y');
     }
 }
