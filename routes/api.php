@@ -38,5 +38,7 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('/invoices', App\Http\Controllers\Api\Admin\InvoiceController::class, ['except' => ['create', 'store','edit', 'update', 'destroy'], 'as' => 'admin']);
         //customer resource
         Route::get('/customers',[App\Http\Controllers\Api\Admin\CustomerController::class, 'index',['as' => 'admin']]);
+        //slider resource
+        Route::apiResource('/sliders', App\Http\Controllers\Api\Admin\SliderController::class, ['except' => ['create', 'show', 'edit', 'update'], 'as' => 'admin']);
     });
 });
