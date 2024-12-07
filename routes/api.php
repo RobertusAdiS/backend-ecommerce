@@ -66,3 +66,12 @@ Route::prefix('customer')->group(function () {
         Route::post('/review',[App\Http\Controllers\Api\Customer\ReviewController::class, 'store', ['as'=> 'customer']]);
     });
 });
+
+Route::prefix('web')->group(function () {
+    //categories resource
+    Route::apiResource('/categories',App\Http\Controllers\Api\Web\CategoryController::class, ['except' =>['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'web']);
+    //product resource
+    Route::apiResource('/products', App\Http\Controllers\Api\Web\ProductController::class, ['except' => ['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'web']);
+    //slider resource
+    Route::get('/sliders',[App\Http\Controllers\Api\Web\SliderController::class, 'index', ['as'=> 'web']]);
+});

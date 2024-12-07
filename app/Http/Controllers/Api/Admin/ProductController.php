@@ -57,6 +57,7 @@ class ProductController extends Controller
         $product = Product::create([
             'image' => $image->hashName(),
             'title' => $request->title,
+            'slug' => Str::slug($request->title, '-'),
             'category_id' => $request->category_id,
             'user_id' => auth()->guard('api_admin')->user()->id,
             'description' => $request->description,
