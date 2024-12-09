@@ -88,4 +88,8 @@ Route::prefix('web')->group(function () {
     Route::get('/carts/total_weight',[App\Http\Controllers\Api\Web\CartController::class, 'getCartWeight'],['as' => 'web']);
     //remove cart
     Route::post('/carts/remove',[App\Http\Controllers\Api\Web\CartController::class, 'removeCart'],['as' => 'web']);
+    //checkout route
+    Route::post('/checkout', [App\Http\Controllers\Api\Web\CheckoutController::class, 'store'], ['as' => 'web']);
+    //notification handler route
+    Route::post('/notification',[App\Http\Controllers\Api\Web\NotificationHandlerController::class,'index'], ['as' => 'web']);
 });
